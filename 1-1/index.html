@@ -1,228 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>1-1 | THS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="1-1有些东西我不会细讲所以阅读本教程需要一定的基础  开发环境准备（ps:本来想来点bukkit历史啥的 但是没准备好）  JDK下载 （贴个openjdk下载地址）  intelij IDEA下载 idea下载   插件调试环境 （例如 bukkit spigot 等）   JDK下载上面已经贴了jdk下载地址 根据自己的需求下载就行  版本  根据自己需求选择 建议选择 8 11 16这三个">
-<meta property="og:type" content="website">
-<meta property="og:title" content="1-1">
-<meta property="og:url" content="http://cound.ltd/1-1/index.html">
-<meta property="og:site_name" content="THS">
-<meta property="og:description" content="1-1有些东西我不会细讲所以阅读本教程需要一定的基础  开发环境准备（ps:本来想来点bukkit历史啥的 但是没准备好）  JDK下载 （贴个openjdk下载地址）  intelij IDEA下载 idea下载   插件调试环境 （例如 bukkit spigot 等）   JDK下载上面已经贴了jdk下载地址 根据自己的需求下载就行  版本  根据自己需求选择 建议选择 8 11 16这三个">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-06-12T08:08:19.000Z">
-<meta property="article:modified_time" content="2021-06-12T08:20:04.686Z">
-<meta property="article:author" content="THS-yuhao">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="THS" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+{% extends '_layout.swig' %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+{% block title %}
+  {% set page_title_suffix = ' | ' + config.title %}
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  {% if page.type === "categories" and not page.title  %}
+    {{ __('title.category') + page_title_suffix }}
+  {% elif page.type === "tags" and not page.title  %}
+    {{ __('title.tag') + page_title_suffix }}
+  {% else %}
+    {{ page.title + page_title_suffix }}
+  {% endif %}
+{% endblock %}
 
-  
-<meta name="generator" content="Hexo 5.4.0"></head>
+{% block content %}
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">THS</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">BUKKIT</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://cound.ltd"></form>
+  <div id="posts" class="posts-expand">
+  {% include '_partials/page-header.swig' %}
+    {# tagcloud page support #}
+    {% if page.type === "tags" %}
+      <div class="tag-cloud">
+        <div class="tag-cloud-title">
+            {{ _p('counter.tag_cloud', site.tags.length) }}
+        </div>
+        <div class="tag-cloud-tags">
+          {{ tagcloud({min_font: 12, max_font: 30, amount: 200, color: true, start_color: '#ccc', end_color: '#111'}) }}
+        </div>
       </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/1-1/index.html" class="article-date">
-  <time class="dt-published" datetime="2021-06-12T08:08:19.000Z" itemprop="datePublished">2021-06-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      1-1
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="1-1"><a href="#1-1" class="headerlink" title="1-1"></a>1-1</h2><p>有些东西我不会细讲所以阅读本教程需要一定的基础 </p>
-<p>开发环境准备（ps:本来想来点bukkit历史啥的 但是没准备好）</p>
-<ul>
-<li><p>JDK下载 （贴个<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/AdoptOpenJDK/">openjdk</a>下载地址）</p>
-</li>
-<li><p>intelij IDEA下载 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/idea/">idea下载</a> </p>
-</li>
-<li><p>插件调试环境 （例如 bukkit spigot 等）</p>
-</li>
-</ul>
-<h4 id="JDK下载"><a href="#JDK下载" class="headerlink" title="JDK下载"></a>JDK下载</h4><p>上面已经贴了jdk下载地址 根据自己的需求下载就行 </p>
-<p>版本  根据自己需求选择 建议选择 8 11 16这三个版本</p>
-<p>JDK  不然你去下载jre？？？</p>
-<p>系统架构 例如X86 X64等</p>
-<p>系统平台 例如linux Windows等</p>
-<p>安装包形式 .msi 或者 .zip</p>
-<h4 id="IDEA下载"><a href="#IDEA下载" class="headerlink" title="IDEA下载"></a>IDEA下载</h4><p>链接已贴  这不用多费口舌 如果访问慢请尝试修改hosts（不会就百度） <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44141495/article/details/108033395">这个够详细</a></p>
-<p>但是有两个IDE插件 你或许需要</p>
-<ul>
-<li>chinese (Simplified)（中文语言包）</li>
-<li>Minecraft development（开发插件）</li>
-</ul>
-<h4 id="bukkit调试环境"><a href="#bukkit调试环境" class="headerlink" title="bukkit调试环境"></a>bukkit调试环境</h4><p>密码都是THS</p>
-<p><a target="_blank" rel="noopener" href="https://wws.lanzoui.com/b026775ng">bukkit</a></p>
-<p><a target="_blank" rel="noopener" href="https://wws.lanzoui.com/b0267767g">spigot</a></p>
-<p><a target="_blank" rel="noopener" href="https://wws.lanzoui.com/b026777wh">paper</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://cound.ltd/1-1/index.html" data-id="ckpti384n00008scs7vxkdb3t" data-title="1-1" class="article-share-link">Teilen</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/06/12/1-1/index/">1-1</a>
-          </li>
-        
-          <li>
-            <a href="/2021/06/12/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+    {% elif page.type === 'categories' %}
+      <div class="category-all-page">
+        <div class="category-all-title">
+            {{ _p('counter.categories', site.categories.length) }}
+        </div>
+        <div class="category-all">
+          {{ list_categories() }}
+        </div>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 THS-yuhao<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
+    {% else %}
+      {{ page.content }}
+    {% endif %}
   </div>
-</footer>
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
+{% endblock %}
 
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+{% block sidebar %}
+  {{ sidebar_template.render(false) }}
+{% endblock %}
